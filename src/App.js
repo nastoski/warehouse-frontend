@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { Container, IconButton, AppBar, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomePage from './pages/HomePage';
@@ -11,15 +10,9 @@ import RegisterPage from './pages/RegisterPage';
 import ItemsPage from './pages/ItemsPage';
 import PrivateRoute from './components/PrivateRoute';
 import Sidebar from './components/Sidebar';
-import { checkAuth } from './actions/authActions';
 
 const App = () => {
-  const dispatch = useDispatch();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch]);
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);

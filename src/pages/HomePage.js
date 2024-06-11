@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { checkAuth } from '../actions/authActions';
 import { fetchWarehousesRequest } from '../actions/warehouseActions';
 import { fetchStoresRequest } from '../actions/storeActions';
 import { fetchItemsRequest } from '../actions/itemActions';
@@ -18,7 +17,6 @@ const HomePage = () => {
     const { items } = useSelector((state) => state.item);
 
     useEffect(() => {
-        dispatch(checkAuth());
         dispatch(fetchWarehousesRequest());
         dispatch(fetchStoresRequest());
         dispatch(fetchItemsRequest());

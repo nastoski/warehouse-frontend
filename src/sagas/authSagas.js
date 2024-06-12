@@ -2,8 +2,6 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from '../axios';
 import { loginSuccess, loginFailure, registerSuccess, registerFailure, checkAuthSuccess, checkAuthFailure, logoutSuccess, logoutFailure } from '../actions/authActions';
 import { LOGIN_REQUEST, REGISTER_REQUEST, CHECK_AUTH, LOGOUT } from '../actions/types';
-import Cookies from 'js-cookie';
-// import { checkAuth } from '../actions/authActions';
 
 function* loginSaga(action) {
     try {
@@ -38,8 +36,6 @@ function* checkAuthSaga() {
 function* handleLogout() {
     try {
         yield call(axios.post, '/auth/logout');
-        // Cookies.remove('access_token', { path: '/', domain: window.location.hostname, secure: true, sameSite: 'None' });
-        document.cookie = 'access_token=; Path=/; Domain=warehouse-backend-x3m-labs.vercel.app; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None;';
         localStorage.removeItem('currentUser');
         yield put(logoutSuccess());
     } catch (error) {

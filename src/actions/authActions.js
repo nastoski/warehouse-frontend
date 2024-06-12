@@ -50,16 +50,12 @@ export const checkAuth = () => ({
 
 export const checkAuthSuccess = (user) => ({
     type: CHECK_AUTH_SUCCESS,
-    payload: {
-        user,
-    },
+    payload: user,
 });
 
 export const checkAuthFailure = (error) => ({
     type: CHECK_AUTH_FAILURE,
-    payload: {
-        error,
-    },
+    payload: error,
 });
 
 export const logout = () => ({
@@ -72,7 +68,5 @@ export const logoutSuccess = () => ({
 
 export const logoutFailure = (error) => ({
     type: LOGOUT_FAILURE,
-    payload: {
-        error,
-    },
+    payload: error,
 });

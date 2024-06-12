@@ -38,6 +38,7 @@ function* checkAuthSaga() {
 function* handleLogout() {
     try {
         yield call(axios.post, '/auth/logout');
+        Cookies.remove('access_token', { path: '/', domain: window.location.hostname, secure: true, sameSite: 'None' });
         localStorage.removeItem('currentUser');
         yield put(logoutSuccess());
     } catch (error) {

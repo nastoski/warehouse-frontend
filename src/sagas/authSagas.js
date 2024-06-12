@@ -3,12 +3,13 @@ import axios from '../axios';
 import { loginSuccess, loginFailure, registerSuccess, registerFailure, checkAuthSuccess, checkAuthFailure, logoutSuccess, logoutFailure } from '../actions/authActions';
 import { LOGIN_REQUEST, REGISTER_REQUEST, CHECK_AUTH, LOGOUT } from '../actions/types';
 import Cookies from 'js-cookie';
+// import { checkAuth } from '../actions/authActions';
 
 function* loginSaga(action) {
     try {
         const response = yield call(axios.post, '/auth/login', action.payload);
         yield put(loginSuccess(response.data));
-
+        localStorage.setItem('currentUser', JSON.stringify(response.data));
     } catch (error) {
         yield put(loginFailure(error.message || 'Network error'));
     }
@@ -36,7 +37,8 @@ function* checkAuthSaga() {
 
 function* handleLogout() {
     try {
-        Cookies.remove('access_token');
+        yield call(axios.post, '/auth/logout');
+        localStorage.removeItem('currentUser');
         yield put(logoutSuccess());
     } catch (error) {
         yield put(logoutFailure(error.message));

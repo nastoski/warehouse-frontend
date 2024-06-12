@@ -13,13 +13,11 @@ const PrivateRoute = ({ children }) => {
         }
     }, [dispatch, currentUser]);
 
-    // console.log(currentUser);
-
-    if (window.location.pathname === '/register') {
-        return children;
+    if (window.location.pathname === '/register' && !currentUser) {
+        return <Navigate to="/register" replace />;
     }
 
-    return currentUser ? children : <Navigate to="/login" />;
+    return currentUser ? children : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;

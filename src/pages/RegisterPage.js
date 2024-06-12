@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerRequest } from '../actions/authActions';
-import { TextField, Button, Typography, Container, Box, Alert } from '@mui/material';
+import { TextField, Button, Typography, Container, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
@@ -43,7 +43,9 @@ const RegisterPage = () => {
                     fullWidth
                     margin="normal"
                 />
-                {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
+                {error && error.response && error.response.status === 401 ? null : (
+                    <Typography color="error">{error && error.message}</Typography>
+                )}
                 <Button
                     variant="contained"
                     color="primary"

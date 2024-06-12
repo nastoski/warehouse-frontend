@@ -26,6 +26,13 @@ const LoginPage = () => {
         <Container maxWidth="sm">
             <Box sx={{ mt: 5 }}>
                 <Typography variant="h4">Login</Typography>
+                <Typography variant="h6">You can use a test user, or <a href="/register">Register</a> a new user!</Typography>
+                <Typography variant="h6">Credentials:
+                    <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                        <li>email: johndoe@example.com</li>
+                        <li>password: john</li>
+                    </ul>
+                </Typography>
                 <TextField
                     label="Email"
                     value={email}

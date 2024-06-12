@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from '../axios';
 import { loginSuccess, loginFailure, registerSuccess, registerFailure, checkAuthSuccess, checkAuthFailure, logoutSuccess, logoutFailure } from '../actions/authActions';
 import { LOGIN_REQUEST, REGISTER_REQUEST, CHECK_AUTH, LOGOUT } from '../actions/types';
+import Cookies from 'js-cookie';
 
 function* loginSaga(action) {
     try {
@@ -36,6 +37,7 @@ function* checkAuthSaga() {
 function* handleLogout() {
     try {
         yield call(axios.post, '/auth/logout');
+        Cookies.remove('access_token');
         localStorage.removeItem('currentUser');
         yield put(logoutSuccess());
     } catch (error) {

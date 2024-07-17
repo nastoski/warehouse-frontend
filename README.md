@@ -53,7 +53,7 @@ This project is a Warehouse Management System with frontend and backend componen
 
 Create a `.env` file in the `frontend` directory and add the following environment variables:
 
-REACT_APP_API_URL=http://localhost:5000
+REACT_APP_API_BASE_URL=http://localhost:8080/api
 
 ### Available Scripts
 

@@ -95,11 +95,15 @@ REACT_APP_API_BASE_URL=http://localhost:8080/api
 
 Create a `.env` file in the `warehouse-backend` directory and add the following environment variables:
 
-
-MONGO_URI=mongodb://localhost:27017/wms
-MONGODB_DB_NAME=
-JWT=your_jwt_secret
-NODE_ENV=
+    
+    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.3zbkqdm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    
+    MONGODB_DB_NAME=warehousedb
+    
+    JWT=your_jwt_secret
+    
+    NODE_ENV=(local for development, production when deployed)
+    
 
 ### API Endpoints
 
